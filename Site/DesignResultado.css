@@ -1,6 +1,73 @@
 body{
     background-image:url(arvoreResultado.jpg);
+    backdrop-filter: blur(2px);
     background-size: 110%;
+    margin-top: 70px;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+}
+.resultado.edward {
+    background-color: rgba(58, 0, 70, 0.8);
+    color: white;
+    box-shadow: 0 15px 20px rgba(200, 0, 255, 0.5);
+    border: 2px solid rgb(176, 119, 255);
+    border-radius: 80px;
+    margin-bottom: 70px;
+
+    height: 400px;
+    padding: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;      
+    text-align: center;
+}
+
+.resultado.bella {
+    
+    background-color: rgba(85, 107, 47, 0.8);
+    color: #fefefe;
+    border: 2px solid rgb(173, 255, 47);
+    border-radius: 80px;
+
+    box-shadow: 0 15px 20px rgba(144, 238, 144, 0.5);
+    backdrop-filter: blur(10px);
+
+    height: 300px;
+    padding: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.resultado.bella img{
+    width: 300px; 
+    height: auto;
+    border: 1px solid rgb(22, 117, 73);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.resultado.bella p{
+    font-size: 20px;
+}
+.resultado.jacob {
+    background-color: rgba(139, 69, 19, 0.85);
+    color: #fff8e7;
+    box-shadow: 0 15px 20px rgba(255, 140, 0, 0.5);
+    border: 2px solid rgb(255, 160, 122);
+    backdrop-filter: blur(10px);
+    border-radius: 80px;
+    height: 350px;
+    padding: 90px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;      
+    text-align: center;
 }

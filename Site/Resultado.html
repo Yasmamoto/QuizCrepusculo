@@ -1,37 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resultado do Quiz</title>
   <link rel="stylesheet" href="DesignResultado.css">
 </head>
 <body>
-  <div class="resultado" id="resultado">
-    <h2>Carregando seu resultado...</h2>
+  <div id="resultado" class="resultado">
+    <h1 id="tituloResultado">Você é...</h1>
+    <img id="fotoPersonagem" src="" alt="Personagem">
+    <p id="descricaoPersonagem"></p>
   </div>
 
-  <audio id="audioResultado" autoplay loop>
+  <!-- Música de fundo -->
+  <audio id="musicaPiano" autoplay loop>
     <source src="Piano.mp3" type="audio/mp3" />
+    Seu navegador não suporta áudio.
   </audio>
-  
+
   <script>
     const personagem = localStorage.getItem("personagemFinal");
+
     const imagens = {
       Edward: "edward.jpg",
       Bella: "bella.jpg",
       Jacob: "jacob.jpg"
     };
 
-    const div = document.getElementById("resultado");
-    if (personagem) {
-      div.innerHTML = `
-      <div class="resultados">
-        <h2>Você é ${personagem} do triângulo amoroso de Crepúsculo!</h2>
-        <img src="${imagens[personagem]}" alt="${personagem}" style="width: 300px; border-radius: 10px;" />
-      `;
-    } else {
-      div.innerHTML = "<h2>Nenhum resultado disponível.</h2>";
-    }
+    const nomes = {
+      Edward: "🦇Edward Cullen🦇",
+      Bella: "🌵Bella Swan🌵",
+      Jacob: "🐺Jacob Black🐺"
+    };
+
+    const descricoes = {
+      Edward: "Parabéns você é um matador no corpo de uma fada…<br>Sininho tem inveja do seu brilho, você é uma pessoa obcecada, honrada que cumpre seu objetivo até o final<br>(O Rei do eu escolhi esperar) e acima de tudo perigosa e misteriosa…",
+      Bella: "Parabéns você e seu cacto têm o mesmo nível de carisma, ou seja, nenhum…<br>Parabéns por ter a mesma expressão de uma pedra, a personalidade de uma porta, e ser totalmente diferente das outras pessoas,<br>aliás não é qualquer um que tem um vampiro e um lobisomem aos seus pés.",
+      Jacob: "Parabéns você é a diva do glow up, de nerd a pessoa que custa ter uma cena que está com camisa,<br>best friend da friendzone, inimigo das roupas, maior talarico existente e com um lema muito icônico:<br>“O importante é não sair da família (não importa se eu vou ter que casar com a filha dela)”"
+    };
+
+    const resultadoDiv = document.getElementById("resultado");
+  resultadoDiv.classList.add(personagem.toLowerCase()); // Adiciona a classe 'edward', 'bella' ou 'jacob'
+
+    document.getElementById("fotoPersonagem").src = imagens[personagem];
+    document.getElementById("descricaoPersonagem").innerHTML = descricoes[personagem];
+    document.getElementById("tituloResultado").innerHTML = `${nomes[personagem]}`;
   </script>
 </body>
 </html>
