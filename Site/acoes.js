@@ -19,23 +19,36 @@ const perguntas = [
 
 let atual = 0;
 const votos = { Edward: 0, Bella: 0, Jacob: 0 };
-
 function mostrarQuestionario() {
   if (atual < perguntas.length) {
     const q = perguntas[atual];
-    quizEl.innerHTML = `
-      <h3>${q.texto}</h3>
-      <div class="botoes">
-        <button onclick="responder('Sim')">✅ SIM ✅</button>
-        <button onclick="responder('Talvez')">❓ TALVEZ ❓</button>
-        <button onclick="responder('Não')">❎ NÃO ❎</button>
-      </div>
-    `;
-    contadorEl.textContent = `${atual + 1}/${perguntas.length}`;
+
+    // Aplica fade-out antes de mudar o conteúdo
+    quizEl.classList.remove("show");
+    quizEl.classList.add("fade");
+
+    setTimeout(() => {
+      quizEl.innerHTML = `
+        <h3>${q.texto}</h3>
+        <div class="botoes">
+          <button class="botao" onclick="responder('Sim')">✅ SIM ✅</button>
+          <button class="botao" onclick="responder('Talvez')">❓ TALVEZ ❓</button>
+          <button class="botao" onclick="responder('Não')">❎ NÃO ❎</button>
+        </div>
+      `;
+
+      contadorEl.textContent = `${atual + 1}/${perguntas.length}`;
+
+      // Força o fade-in com pequeno delay
+      setTimeout(() => {
+        quizEl.classList.add("show");
+      }, 50);
+    }, 300); // tempo do fade-out
   } else {
     visualizarResultado();
   }
 }
+
 
 function responder(resposta) {
   const personagem = perguntas[atual].map[resposta];

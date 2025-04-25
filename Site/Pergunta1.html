@@ -4,21 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>QUIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Mono+One&family=Tagesschrift&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="DesignPagQuiz.css" />
 </head>
 <body>
-  <div class="titulo">
-    <h2>QUIZ: Qual personagem do triângulo amoroso<br>de Crepúsculo te representa?</h2>
+  <div class="container">
+    <div class="titulo">
+      <h2>QUIZ: Qual personagem do triângulo amoroso<br>de Crepúsculo te representa?</h2>
+    </div>
+
+    <div class="numero_pagina">
+      <h2 id="contador">1/12</h2>
+    </div>
+
+    <div id="Quiz" class="pergunta">
+      <h3>Você é uma pessoa que tem a preferência de ficar<br>sem a parte de cima de suas vestimentas?</h3>
+    </div>
   </div>
 
-  <div class="numero_pagina">
-    <h2 id="contador">1/12</h2>
-  </div>
-
-  <div id="Quiz" class="pergunta">
-    <h3>Você é uma pessoa que tem a preferência de ficar<br>sem a parte de cima de suas vestimentas?</h3>
-  </div>
-  
   <audio id="musicaFundo" loop>
     <source src="Musica.mp3" type="audio/mp3" />
     Seu navegador não suporta áudio.
@@ -26,4 +31,5 @@
 
   <script src="acoes.js"></script>
 </body>
+
 </html>

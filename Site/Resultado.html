@@ -46,6 +46,12 @@
     document.getElementById("fotoPersonagem").src = imagens[personagem];
     document.getElementById("descricaoPersonagem").innerHTML = descricoes[personagem];
     document.getElementById("tituloResultado").innerHTML = `${nomes[personagem]}`;
+  
+    window.addEventListener("load", () => {
+  document.body.classList.remove("fade-out");
+});
   </script>
+
+  
 </body>
 </html>
