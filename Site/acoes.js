@@ -54,17 +54,17 @@ function visualizarResultado() {
     }
   }
 
+  // Salva o resultado no localStorage
+  localStorage.setItem("personagemFinal", vencedor);
+
+  // Redireciona para a página de resultado
+  window.location.href = "Resultado.html";
+  }
+
   const imagens = {
     Edward: "edward.jpg",
     Bella: "bella.jpg",
     Jacob: "jacob.jpg"
   };
-
-  quizEl.innerHTML = `
-    <h2>Você é ${vencedor} do triângulo amoroso de Crepúsculo!</h2>
-    <img src="${imagens[vencedor]}" alt="${vencedor}" style="width: 300px; border-radius: 10px;"/>
-  `;
-  contadorEl.textContent = "Resultado";
-}
 
 mostrarQuestionario();

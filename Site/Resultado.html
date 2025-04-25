@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado do Quiz</title>
+  <link rel="stylesheet" href="DesignResultado.css">
+</head>
+<body>
+  <div class="resultado" id="resultado">
+    <h2>Carregando seu resultado...</h2>
+  </div>
+
+  <script>
+    const personagem = localStorage.getItem("personagemFinal");
+    const imagens = {
+      Edward: "edward.jpg",
+      Bella: "bella.jpg",
+      Jacob: "jacob.jpg"
+    };
+
+    const div = document.getElementById("resultado");
+    if (personagem) {
+      div.innerHTML = `
+      <div class="resultados">
+        <h2>Você é ${personagem} do triângulo amoroso de Crepúsculo!</h2>
+        <img src="${imagens[personagem]}" alt="${personagem}" style="width: 300px; border-radius: 10px;" />
+      `;
+    } else {
+      div.innerHTML = "<h2>Nenhum resultado disponível.</h2>";
+    }
+  </script>
+</body>
+</html>
