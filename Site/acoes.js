@@ -1,70 +1,70 @@
-//TUDO FICA AQUI E VAI PRA DIV, TEM QUE FAZER O MAPEAMENTO E AS RESPOSTAS DAS PERGUNTAS
-
-//criar o id do quiz para ser usado no html
-
 const quizEl = document.getElementById("Quiz");
+const contadorEl = document.getElementById("contador");
+
 const perguntas = [
-    { texto: "Você gosta de ficar sem camisa?", map: { Sim: 'Jacob', Não: 'Bella', Talvez: 'Edward' } },
-    { texto: "Você gosta de suco de tomate?", map: { Sim: 'Edward', Não: 'Jacob', Talvez: 'Bella' } },
-    { texto: "Você gosta de brilho e purpurina?", map: { Sim: 'Edward', Não: 'Jacob', Talvez: 'Bella' } },
-    { texto: "Gosta de biologia?", map: { Sim: 'Bella', Não: 'Jacob', Talvez: 'Edward' } },
-    { texto: "Gosta de estar sempre ao ar livre?", map: { Sim: 'Jacob', Não: 'Bella', Talvez: 'Edward' } },
-    { texto: "Você se considera talarico?", map: { Sim: 'Jacob', Não: 'Edward', Talvez: 'Bella' } },
-    { texto: "Gosta de plantar cacto?", map: { Sim: 'Bella', Não: 'Edward', Talvez: 'Jacob' } },
-    { texto: "Se considera uma pessoa insegura?", map: { Sim: 'Bella', Não: 'Jacob', Talvez: 'Edward' } },
-    { texto: "Você se sente diferente às vezes?", map: { Sim: 'Jacob', Não: 'Bella', Talvez: 'Edward' } },
-    { texto: "Aprecia a literatura clássica?", map: { Sim: 'Edward', Não: 'Jacob', Talvez: 'Bella' } },
-    { texto: "Pretende se manter casto até o casamento?", map: { Sim: 'Edward', Não: 'Bella', Talvez: 'Jacob' } },
-    { texto: "Seu passatempo é caçar animais?", map: { Sim: 'Edward', Não: 'Bella', Talvez: 'Jacob' } },
+  { texto: "Você é uma pessoa que tem a preferência de ficar<br>sem a parte de cima de suas vestimentas?", map: { Sim: 'Jacob', Não: 'Bella', Talvez: 'Edward' } },
+  { texto: "Você é uma pessoa que é apreciador nato<br>de um delicioso suco de tomate?", map: { Sim: 'Edward', Não: 'Jacob', Talvez: 'Bella' } },
+  { texto: "Você é alguém que tem um brilho tal qual uma purpurina?", map: { Sim: 'Edward', Não: 'Jacob', Talvez: 'Bella' } },
+  { texto: "Você é alguém que gosta/gostava da<br>matéria de biologia na escola?", map: { Sim: 'Bella', Não: 'Jacob', Talvez: 'Edward' } },
+  { texto: "Quando você tem um tempo sobrando,<br>gosta de longos passeios ao ar livre?", map: { Sim: 'Jacob', Não: 'Bella', Talvez: 'Edward' } },
+  { texto: "Quando um amigo seu te apresenta a namorada dele,<br>você apresenta fortes tendencias a talarica-lo?", map: { Sim: 'Jacob', Não: 'Edward', Talvez: 'Bella' } },
+  { texto: "Se você tivesse uma floricultura,<br>seu passa tempo favorito seria plantar cactos?", map: { Sim: 'Bella', Não: 'Edward', Talvez: 'Jacob' } },
+  { texto: "Você infelizmente se considera uma pessoa insegura?", map: { Sim: 'Bella', Não: 'Jacob', Talvez: 'Edward' } },
+  { texto: "Você se sente uma pessoa diferente das pessoas normais?", map: { Sim: 'Jacob', Não: 'Bella', Talvez: 'Edward' } },
+  { texto: "Você é um grande apreciador de literaturas clássicas?", map: { Sim: 'Edward', Não: 'Jacob', Talvez: 'Bella' } },
+  { texto: "Como você é uma pessoa muito santa,<br>você pensa em se manter casta/o até o seu casamento?", map: { Sim: 'Edward', Não: 'Bella', Talvez: 'Jacob' } },
+  { texto: "Se o Ibama não existisse, o seu passa tempo<br>favorito bem provavelmente seria caçar animais?", map: { Sim: 'Edward', Não: 'Bella', Talvez: 'Jacob' } }
 ];
 
-let atual = 0; // Índice da pergunta atual
-const votos = { Edward: 0, Bella: 0, Jacob: 0 }; // Objeto para contar os votos
+let atual = 0;
+const votos = { Edward: 0, Bella: 0, Jacob: 0 };
 
 function mostrarQuestionario() {
+  if (atual < perguntas.length) {
     const q = perguntas[atual];
     quizEl.innerHTML = `
-        <h2>${q.texto}</h2>
-        <button onclick="responder('Sim')">Sim</button>
-        <button onclick="responder('Não')">Não</button>
-        <button onclick="responder('Talvez')">Talvez</button>
+      <h3>${q.texto}</h3>
+      <div class="botoes">
+        <button onclick="responder('Sim')">✅ SIM ✅</button>
+        <button onclick="responder('Talvez')">❓ TALVEZ ❓</button>
+        <button onclick="responder('Não')">❎ NÃO ❎</button>
+      </div>
     `;
+    contadorEl.textContent = `${atual + 1}/${perguntas.length}`;
+  } else {
+    visualizarResultado();
+  }
 }
 
-// Corrigindo o nome da função para corresponder ao onclick no HTML
 function responder(resposta) {
-    const personagem = perguntas[atual].map[resposta];
-    votos[personagem]++;
-    atual++;
-
-    if (atual < perguntas.length) {
-        mostrarQuestionario();
-    } else {
-        visualizarResultado();
-    }
+  const personagem = perguntas[atual].map[resposta];
+  votos[personagem]++;
+  atual++;
+  mostrarQuestionario();
 }
 
 function visualizarResultado() {
-    let vencedor = "";
-    let maior = -1;
+  let vencedor = "";
+  let maior = -1;
 
-    for (let nome in votos) {
-        if (votos[nome] > maior) {
-            maior = votos[nome];
-            vencedor = nome;
-        }
+  for (let nome in votos) {
+    if (votos[nome] > maior) {
+      maior = votos[nome];
+      vencedor = nome;
     }
-    const imagens = {
-        Edward: "edward.jpg",
-        Bella: "bella.jpg",
-        Jacob: "jacob.jpg"
-    };
+  }
 
-    quizEl.innerHTML = `
-        <h2>Você é ${vencedor} do triângulo amoroso de Crepúsculo!</h2>
-        <img src="${imagens[vencedor]}" alt="${vencedor}" style="width: 300px; border-radius: 10px;"/>
-    `;
+  const imagens = {
+    Edward: "edward.jpg",
+    Bella: "bella.jpg",
+    Jacob: "jacob.jpg"
+  };
+
+  quizEl.innerHTML = `
+    <h2>Você é ${vencedor} do triângulo amoroso de Crepúsculo!</h2>
+    <img src="${imagens[vencedor]}" alt="${vencedor}" style="width: 300px; border-radius: 10px;"/>
+  `;
+  contadorEl.textContent = "Resultado";
 }
 
-// Inicializar o quiz quando a página carregar
 mostrarQuestionario();
