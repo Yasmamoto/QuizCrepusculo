@@ -25,7 +25,17 @@ body{
     align-items: center;      
     text-align: center;
 }
+.resultado.edward img{
+    width: 450px; 
+    height: auto;
+    border: 1px solid rgb(72, 11, 129);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
 
+.resultado.edward p{
+    font-size: 20px;
+}
 .resultado.bella {
     
     background-color: rgba(85, 107, 47, 0.8);
@@ -62,7 +72,7 @@ body{
     border: 2px solid rgb(255, 160, 122);
     backdrop-filter: blur(10px);
     border-radius: 80px;
-    height: 350px;
+    height: 400px;
     padding: 90px;
     
     display: flex;
@@ -70,4 +80,16 @@ body{
     justify-content: center;  
     align-items: center;      
     text-align: center;
+}
+
+.resultado.jacob img{
+    width: 350px; 
+    height: auto;
+    border: 1px solid rgb(54, 19, 3);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.resultado.jacob p{
+    font-size: 20px;
 }
