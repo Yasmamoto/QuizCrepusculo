@@ -1,3 +1,4 @@
+
 const quizEl = document.getElementById("Quiz");
 const contadorEl = document.getElementById("contador");
 
@@ -66,5 +67,14 @@ function visualizarResultado() {
     Bella: "bella.jpg",
     Jacob: "jacob.jpg"
   };
+  const audio = document.getElementById("musicaFundo");
 
+  document.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play().catch((err) => {
+        console.error("Erro ao tocar o áudio:", err);
+      });
+    }
+  }, { once: true });
+  
 mostrarQuestionario();
